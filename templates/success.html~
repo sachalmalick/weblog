@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Did you do it?</title>
+  </head>
+  <body>
+    <center>
+      <h2>{{result}}</h2>
+    </center>
+  </body>
+</html>
