@@ -8,4 +8,4 @@
 | 10-27-16    |                  |MISSING           |                  |                  |Worked on design documents|
 | 10-28-16    |                  |                  |                  |                  |Exchanged design documents with other students, Revised design documents and reviewed comments|
 | 10-31-16    |Decided to use error-update method |MISSING           |Started seed database                  |Worked on revising implementation, Started seed data|                  |
-| 11-01-16    |                  |                  |                  |                  |                                  |
+| 11-01-16    |Created compendium of functions for use in app    | Incorporated login into app | Worked on incorporating initiating functions for db                 | Started templates |                                  |
