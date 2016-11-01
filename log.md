@@ -1,6 +1,6 @@
 #Log
 
-| Date        | Sharon           | Sachal           |   Asher          | Felix            |Total                             |
+| Date        | Sharon  (PM)         | Sachal (Backend)          |   Asher  (DB)        | Felix (Frontend)           |Total                             |
 | ----------- |------------------|------------------|------------------|------------------|----------------------------------|
 | 10-24-16    |                  |MISSING           |                  |                  |Submitted V1 of blog, Presented to class, received comments|
 | 10-25-16    |                  |                  |                  |                  |                                  |
