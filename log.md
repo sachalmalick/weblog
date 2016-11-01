@@ -1,4 +1,11 @@
 #Log
 
-| Date        | Sharon           | Sachal  |   Asher     | Felix      |
-| ----------- |----------------|-------|---------------|-----------|
+| Date        | Sharon           | Sachal           |   Asher          | Felix            |Total                             |
+| ----------- |------------------|------------------|------------------|------------------|----------------------------------|
+| 10-24-16    |                  |MISSING           |                  |                  |Submitted V1 of blog, Presented to class, received comments|
+| 10-25-16    |                  |                  |                  |                  |                                  |
+| 10-26-16    |                  |                  |                  |                  |                                  |
+| 10-27-16    |                  |MISSING           |                  |                  |Worked on design documents|
+| 10-28-16    |                  |                  |                  |                  |Exchanged design documents with other students, Revised design documents and reviewed comments|
+| 10-31-16    |Decided to use error-update method |MISSING           |Started seed database                  |Worked on revising implementation, Started seed data|                  |
+| 11-01-16    |                  |                  |                  |                  |                                  |
