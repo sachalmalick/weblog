@@ -1,71 +1,86 @@
-#Allways in School Squad
-#Softdev PD 8
+#Always in School Squad: Felix Rieg-Baumhauer, Asher Lasday, Sahron Lin, Sachal Malick
+#Softdev pd8
+#HW10 -- Da ARt of Storytellin'
+#2016-11-01
 
-import hashlib, csv, os
+
+#import the fxns--from utils
+import utils.auth, hashlib, os
 from flask import Flask, render_template, session, request, redirect, url_for
 
 app = Flask(__name__)
 
 app.secret_key = os.urandom(32)
+secret = 'secret_cookie_key'
+
+#========================================ROUTAGE
 
 @app.route("/")
 def index():
-    if 'userA' in session:
-        return render_template("home.html", user=session["userA"])
-    return redirect(url_for('login'))
+    if (secret in session):
+        return render_template('index.html')
+    #redirect(url_for("log_em_in"))
+    return render_template('auth.html', action_type='login')
 
-@app.route("/login")
-def login():
-    createdict()
-    return render_template("form.html")
+
+#@app.route("/login")
+#def log_em_in():
+#    return render_template('auth.html', action_type='login')
+
+@app.route("/login", methods=["POST"])
+def log_em_in():
+    given_user = request.form["username"]
+    given_pass = request.form["password"]
+
+    hashPassObj = hashlib.sha1()
+    hashPassObj.update(given_pass)
+    hashed_pass = hashPassObj.hexdigest()
+    
+    are_u_in = utils.auth.login(given_user, hashed_pass)
+
+    if(are_u_in == True):
+        session[secret]=given_user
+        return redirect(url_for('index'))#return render_template('index.html')
+    #else:
+    #return redirect(url_for("log_em_in"))
+    return render_template('auth.html', action_type='login')
 
 @app.route("/logout")
-def logout():
-    session.pop('userA')
-    return redirect(url_for('login'))
+def log_em_out():
+    print session
+    session.pop(secret)
+    return redirect(url_for("index")) #redirect(url_for("log_em_in"))
 
-csv = "data/users.csv"
-storage = dict()
 
-def createdict():
-    sdata = open(csv).read()
-    sdata = sdata.split(';')
-    sdata[:] = [x.split(',') for x in sdata]
-    for i in sdata:
-        storage[i[0]] = i[1]
+@app.route("/make_account")
+def make_dat_account():
+    return render_template('auth.html', action_type="mk_act")
 
-def hasher(passw):
-    return hashlib.sha224(passw.encode('utf-8')).hexdigest()
+
+@app.route("/create_account", methods = ['POST'])
+def create_dat_account():
+    wanted_user = request.form["username"]
+    wanted_pass = request.form["password"]
+
+    hashPassObj2 = hashlib.sha1()
+    hashPassObj2.update(wanted_pass)
+    hashed_pass = hashPassObj2.hexdigest()
+
+    is_user_now = utils.auth.make_account(wanted_user, hashed_pass)
+
+    if(is_user_now == True):
+        #return redirect(url_for("log_em_in"))
+        return redirect(url_for("index")) #redirect(url_for("log_em_in"))
+    #else
+    return render_template('auth.html', action_type='mk_act')
     
-@app.route("/auth", methods=['POST'])
-def authenticate():
-    userA = request.form["username"]
-    passA = request.form["password"]
-    if userA in storage:
-        if hasher(passA) == storage[userA]:
-            session['userA'] = userA 
-            return render_template("home.html", user=session['userA'])
-        else:
-            return render_template("success.html", result="*Password is incorrect*")
-    else:
-        return render_template("success.html", result="The username does not exist. Please create an account.")
+#======================================END__OF__ROUTAGE
 
-@app.route("/new", methods=['POST'])
-def new():
-    return render_template("create.html")
-
-
-@app.route("/create", methods=['POST'])
-def create():
-    userA = request.form["username"]
-    passA = request.form["password"]
-    fd = open(csv, 'a')
-    if userA in storage:
-        return render_template("success.html", result="An account with that username already exists. Enter the correct password at sign in or make a new account.")
-    fd.write(";"+userA+","+hasher(passA))
-    fd.close()
-    return render_template("success.html", result="Account was successfully created!")
 
 if __name__ == "__main__":
     app.debug = True
-    app.run()    
+    app.run() 
+
+
+
+

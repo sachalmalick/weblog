@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+    {% if action_type == "login" %}
+
+    <head>
+      <title>LOGIN</title>
+    </head>
+    
+    <body>
+    
+    WELCOME TO THE LOGIN PAGE
+    <br>
+    <br>
+    To login:
+    <br>
+    <br>
+    
+    <table border="1">
+      <tr>
+	<td>
+	<form action="/login", method="POST">
+	  username:<br>
+	  <input type="text" name="username">
+	  <br>
+	  <br>
+	  password:<br>
+	  <input type="password" name="password">
+	  <br>
+	  <br>
+	  <input type="submit" name="sub1">
+	  
+	</form>
+	</td>
+      </tr>
+    </table>
+
+    <br>
+    <br>
+    <br>
+    
+    <form action="/make_account">
+      <input type="submit" value="Make Account" />
+    </form>
+
+    {% elif action_type == "mk_act"%}
+
+    <head>
+      <title>MAKE ACOUNT</title>
+    </head>
+    
+    <body>
+    
+    WELCOME TO THE MAKE ACCOUNT PAGE
+    <br>
+    <br>
+    To Make an Account:
+    <br>
+    <br>
+    
+    <table border="1">
+      <tr>
+	<td>
+	<form action="/create_account", method="POST">
+	  username:<br>
+	  <input type="text" name="username">
+	  <br>
+	  <br>
+	  password:<br>
+	  <input type="password" name="password">
+	  <br>
+	  <br>
+	  <input type="submit" name="sub1">
+	  
+	</form>
+	</td>
+      </tr>
+    </table>
+
+    
+    {% endif %}
+    
+  </body>
+  
+</html>
