@@ -17,9 +17,5 @@ def getTitle(int sid_input):
     print (sTitle)
 
         
-=======
 def display(story_id):
-<<<<<<< HEAD
-=======
     
->>>>>>> 849b50a0d14f35c9c5551019d885156e98a7a1ad
