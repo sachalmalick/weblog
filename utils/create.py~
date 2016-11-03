@@ -21,20 +21,17 @@ def check_story(g_username, story_id):
 
 
 
-def create_story(g_username, u_id, u_title, u_recent, u_editors, u_timesince, u_timestamp):
+def create_story(g_username, ID, TITLE, RECENT, EDITRS, TIMESINCE, TIMESTAMP):
     #===============OPENING THE DB=========
     f = "../data/weblog.db"
     db = sqlite3.connect(f)
     c = db.cursor()
     #=====================================
 
-    params = (u_id, u_title, u_recent, u_editors, u_timesince, u_timestamp);
-    params1 = (u_id, u_title, u_recent);
-
-    c.execute("INSERT INTO story (story_id, story_title, most_recent, number_edits, time_Since, timestamp) VALUES (?,?,?, ?, ?, ?)", params)
-    c.execute("INSERT INTO full_story (story_id, story_title, full_text) VALUES (?,?,?)", params1)
+    c.execute("INSERT INTO story (story_id, story_title, most_recent, number_edits, time_since, timestamp) VALUES (ID, TITLE, RECENT, EDITRS, TIMESINCE, TIMESTAMP)")
+    c.execute("INSERT INTO full_story (story_id, story_title, full_text) VALUES (ID, TITLE, full_text+RECENT)")
     db.commit()
     db.close()
 
 
-create_story("user", 121, "title", "recentstuff", 4, 55,55);
+create_story("test", 232, "title", "recent edit", {1}, 2, 2);
