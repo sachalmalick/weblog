@@ -38,3 +38,4 @@ def create_story(g_username, u_id, u_title, u_recent, u_editors, u_timesince, u_
 
 
 create_story("user", 121, "title", "recentstuff", 4, 55,55);
+create_story("user", 122, "sharon story", "sharon went to the park", 4, 55,55);
