@@ -4,14 +4,19 @@ import os
 
 f='../data/weblog.db' 
 
-os.remove(f)
+s='../data/story.db'
+f_s='../data/full_story.db'
+u='../data/users.db'
+
 
 db = sqlite3.connect(f)
-c = db.cursor
+c = db.cursor()
 
-def getTitle(int story_id){
+def getTitle(int sid_input):
+    c.execute("SELECT story_title FROM" + f_s + "WHERE story_id =(" + sid_input + ")")
+    sTitle = c.fetchall()
+    print (sTitle)
+
         
 =======
 def display(story_id):
-    
->>>>>>> effe7eae975846de61dc58f174e20dd69ef9c29f
