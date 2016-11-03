@@ -16,6 +16,7 @@ def getTitle(int sid_input):
     sTitle = c.fetchall()
     print (sTitle)
 
+<<<<<<< HEAD
 def 
             
 =======
@@ -23,3 +24,8 @@ def display(story_id):
 <<<<<<< HEAD
 =======
  
+=======
+        
+def display(story_id):
+    
+>>>>>>> b3fe836a21f753dc824546d3b33145637d94c76d
