@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import sqlite3
 import os
 
@@ -20,3 +19,7 @@ def getTitle(int sid_input):
         
 =======
 def display(story_id):
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 849b50a0d14f35c9c5551019d885156e98a7a1ad

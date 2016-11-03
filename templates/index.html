@@ -1,22 +1,35 @@
-<!DOCTYPE html>
-<html>
+{% extends "layout.html" %}
+{% block title %}INDEX{% endblock %}
 
-  <head>
-    <title>WELCOME</title>
-  </head>
+{% block content %}
 
-  <body>
+  WELCOME
+  <br>
+  <br>
+  This is the front page
+  <br>
 
-    WELCOME
-    <br>
-    <br>
-    This is the front page
-    <br>
+   <table border="2">
+     <tr>
+     </tr>
+     <tr>
+     </tr>
+     <tr>
+       <th>
 
-    <form action="/logout">
-      <input type="submit" value="Logout" />
-    </form>
-    
-  </body>
+       <form action="/logout">
+	 <input type="submit" value="Logout" />
+       </form>
+       <form action="/feed">
+	 <input type="submit" value="View Other Stories" />
+       </form>
+
+       </th>
+     </tr>
+    </table>
   
-</html>
+  <br>
+  
+
+  
+{% endblock %}
