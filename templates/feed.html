@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block title %}FEED{% endblock %}
+
+{% block content %}
+
+
+  <table style="width:100%">
+    <tr>
+      <td style="width: 50%">
+
+	WELCOME
+	<br>
+	This is the feed of undiscovered stories
+	<br>
+	
+      </td>
+      <td style="width: 30%">
+      </td>
+      <td style="width: 20%">
+	
+	<form action="/logout">
+	  <input type="submit" value="Logout" />
+	</form>
+	<form action="/return_home">
+	  <input type="submit" value="Back" />
+	</form>
+	
+      </td>
+    </tr>
+    
+    <tr>
+      
+      <td>
+	
+	STORIES:
+	<br>
+	{{article_title}}
+	
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      
+    </tr>
+  </table>
+  <br>
+  
+
+  {% endblock %}
+  
+  

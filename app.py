@@ -53,6 +53,19 @@ def log_em_out():
     session.pop(secret)
     return redirect(url_for("index")) #redirect(url_for("log_em_in"))
 
+#similar mechanic to "/"
+@app.route("/feed")
+def feed_em_new_ones():
+    if (secret in session):
+        title1 = utils.display.getTitle(122)
+        return render_template("feed.html", article_title=title1)
+    return redirect(url_for("index"))
+
+#to return from feed to / or index
+@app.route("/return_home")
+def return_to_home():
+    return redirect(url_for("index")) 
+
 
 @app.route("/make_account")
 def make_dat_account():
@@ -81,6 +94,7 @@ def create_dat_account():
         return redirect(url_for("index")) #redirect(url_for("log_em_in"))
     #else
     return render_template('auth.html', action_type='mk_act')
+
 
 
 
