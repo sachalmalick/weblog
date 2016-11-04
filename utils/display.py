@@ -41,15 +41,53 @@ def getFullText(sid_input):
             de_fText=y
     return (de_fText)
 
-def getUsername(uid_input):
+
+def getuser(sid_input):
     f="data/weblog.db"
-        
+    db = sqlite3.connect(f)
+    c=db.cursor()
+    c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
+    sFText c.fetchall()
 
-
-
-
+    print (sFText)
     
-    #return (sTitle)
+    db.commit()
+    db.close()
+    for x in sFText:
+        for y in x:
+            de_fText=y
+    return (de_fText)
+
+def getEmail(sid_input):
+    f="data/weblog.db"
+    db = sqlite3.connect(f)
+    c=db.cursor()
+    c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
+    sFText c.fetchall()
+
+    print (sFText)
+    
+    db.commit()
+    db.close()
+    for x in sFText:
+        for y in x:
+            de_fText=y
+    return (de_fText)
+
+def getRecentAdd(sid_input):
+    f="data/weblog.db"
+    db = sqlite3.connect(f)
+    c=db.cursor()
+    c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
+    sFText c.fetchall()
+
+    print (sFText)
+    
+    db.commit()
+    db.close()
+    for x in sFText:
+        for y in x:
+            de_fText=y
+    return (de_fText)
 
 
-   
