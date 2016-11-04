@@ -7,9 +7,7 @@ import os
 ##f_s='../data/full_story.db'
 ##u='../data/users.db'
 
-
-
-
+    
 def getTitle(sid_input):
     f="data/weblog.db"  
     db = sqlite3.connect(f)
@@ -27,5 +25,6 @@ def getTitle(sid_input):
     return (de_title)
     
     #return (sTitle)
+
 
    

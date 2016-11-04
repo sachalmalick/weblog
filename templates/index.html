@@ -3,38 +3,48 @@
 
 {% block content %}
 
-  WELCOME
-  <br>
-  This is the front page
-  <br>
 
-   <table border="2">
-     <tr>
-     </tr>
-     <tr>
-     </tr>
-     <tr>
-       <th>
-	 
-	 <form action="/logout">
-	   <input type="submit" value="Logout" />
-	 </form>
-	 <form action="/feed">
-	   <input type="submit" value="View Other Stories" />
-	 </form>
-	 
-       </th>
-     </tr>
-   </table>
+  <table style="width:100%">
+    <tr>
+      <td style="width: 50%">
 
-   <br>
-   <br>
-   STORIES:
-   <br>
-   {{article_title}}
-   <br>
-  
-   <br>
+	WELCOME
+	<br>
+	This is the front page
+	<br>
+	
+      </td>
+      <td style="width: 30%">
+      </td>
+      <td style="width: 20%">
+	
+	<form action="/logout">
+	  <input type="submit" value="Logout" />
+	</form>
+	<form action="/feed">
+	  <input type="submit" value="View Other Stories" />
+	</form>
+	
+      </td>
+    </tr>
+    
+    <tr>
+      
+      <td>
+	
+	STORIES:
+	<br>
+	{{article_title}}
+	
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      
+    </tr>
+  </table>
+  <br>
   
 
   {% endblock %}
