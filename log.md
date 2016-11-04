@@ -10,4 +10,4 @@
 |10-31-16|Decided to use error-update method|MISSING|Started seed database|Worked on revising implementation, Started seed data||
 |11-01-16|Created compendium of functions for use in app| Incorporated login into app|Worked on incorporating initiating functions for db| Started templates + created basic login/logout/make account||
 |11-02-16|Completed method list, finished implementing create.py, creating story_ids|Spoke with Mr. Brown about progress within the team  |Pushed the database to the repo |Working on Jinja2 (inheritance+displaying text)||
-|11-03-16|Pushed changes to create.py|||||
+|11-03-16|Pushed changes to create.py||||Worked on presenting stories, eidtied fxns in display, added parameters to login/logout|
