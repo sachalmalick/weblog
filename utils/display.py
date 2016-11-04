@@ -1,19 +1,31 @@
 import sqlite3
 import os
 
-f='../data/weblog.db' 
+
 
 ##s='../data/story.db'
 ##f_s='../data/full_story.db'
 ##u='../data/users.db'
 
 
-db = sqlite3.connect(f)
-c = db.cursor()
+
 
 def getTitle(sid_input):
-    c.execute("SELECT story_title FROM + full_story + WHERE story_id =(" + sid_input + ")")
+    f="data/weblog.db"  
+    db = sqlite3.connect(f)
+    c = db.cursor()
+    c.execute("SELECT story_title FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sTitle = c.fetchall()
-    return (sTitle)
+
+    print(sTitle)
+    
+    db.commit()
+    db.close()
+    for x in sTitle:
+        for y in x:
+            de_title=y
+    return (de_title)
+    
+    #return (sTitle)
 
    

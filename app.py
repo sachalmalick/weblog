@@ -5,7 +5,7 @@
 
 
 #import the fxns--from utils
-import utils.auth, hashlib, os
+import utils.auth, utils.display, hashlib, os
 from flask import Flask, render_template, session, request, redirect, url_for
 
 app = Flask(__name__)
@@ -18,7 +18,8 @@ secret = 'secret_cookie_key'
 @app.route("/")
 def index():
     if (secret in session):
-        return render_template('index.html')
+        title1 = utils.display.getTitle(121)
+        return render_template('index.html', article_title=title1)
     #redirect(url_for("log_em_in"))
     return render_template('auth.html', action_type='login')
 
@@ -35,7 +36,7 @@ def log_em_in():
     hashPassObj = hashlib.sha1()
     hashPassObj.update(given_pass)
     hashed_pass = hashPassObj.hexdigest()
-    
+
     are_u_in = utils.auth.login(given_user, hashed_pass)
 
     if(are_u_in == True):
@@ -44,7 +45,8 @@ def log_em_in():
     #else:
     #return redirect(url_for("log_em_in"))
     return render_template('auth.html', action_type='login')
-
+    #return redirect(url_for("log_em_in"))
+    
 @app.route("/logout")
 def log_em_out():
     print session
@@ -60,20 +62,28 @@ def make_dat_account():
 @app.route("/create_account", methods = ['POST'])
 def create_dat_account():
     wanted_user = request.form["username"]
-    wanted_pass = request.form["password"]
+    email = request.form["email"]
+    wanted_pass1 = request.form["password1"]
+    wanted_pass2 = request.form["password2"]
+
+    hashPassObj1 = hashlib.sha1()
+    hashPassObj1.update(wanted_pass1)
+    hashed_pass1 = hashPassObj1.hexdigest()
 
     hashPassObj2 = hashlib.sha1()
-    hashPassObj2.update(wanted_pass)
-    hashed_pass = hashPassObj2.hexdigest()
+    hashPassObj2.update(wanted_pass2)
+    hashed_pass2 = hashPassObj2.hexdigest()
 
-    is_user_now = utils.auth.make_account(wanted_user, hashed_pass)
+    is_user_now = utils.auth.make_account(wanted_user, hashed_pass1, hashed_pass2, email)
 
     if(is_user_now == True):
         #return redirect(url_for("log_em_in"))
         return redirect(url_for("index")) #redirect(url_for("log_em_in"))
     #else
     return render_template('auth.html', action_type='mk_act')
-    
+
+
+
 #======================================END__OF__ROUTAGE
 
 

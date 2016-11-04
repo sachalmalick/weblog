@@ -5,7 +5,6 @@
 
   WELCOME
   <br>
-  <br>
   This is the front page
   <br>
 
@@ -16,20 +15,28 @@
      </tr>
      <tr>
        <th>
-
-       <form action="/logout">
-	 <input type="submit" value="Logout" />
-       </form>
-       <form action="/feed">
-	 <input type="submit" value="View Other Stories" />
-       </form>
-
+	 
+	 <form action="/logout">
+	   <input type="submit" value="Logout" />
+	 </form>
+	 <form action="/feed">
+	   <input type="submit" value="View Other Stories" />
+	 </form>
+	 
        </th>
      </tr>
-    </table>
+   </table>
+
+   <br>
+   <br>
+   STORIES:
+   <br>
+   {{article_title}}
+   <br>
   
-  <br>
+   <br>
   
 
+  {% endblock %}
   
-{% endblock %}
+  
