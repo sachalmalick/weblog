@@ -1,0 +1,10 @@
+import sqlite3, datetime, uuid
+
+def create_story(u_username, u_title, u_recent):
+
+    params = (uuid.uuid1(), u_title, u_recent)
+
+    c.execute("INSERT INTO fullstories (story_id, story_title, most_recent) VALUES (?, ?, ?)", params)
+    c.execute("INSERT INTO partialstories (story_id, story_title, most_recent, number_edits, time_since) VALUES (?,?,?,1,0)", params)
+#    c.execute("UPDATE users SET story_ids = WHERE username= u_username")
+    
