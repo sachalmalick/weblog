@@ -1,18 +1,19 @@
 import sqlite3
 import os
 
-
-
 ##s='../data/story.db'
 ##f_s='../data/full_story.db'
 ##u='../data/users.db'
 
     
 def getTitle(sid_input):
-    f="data/weblog.db"  
+#============ACCESSING THE DB========
+    f="../data/weblog.db"  
     db = sqlite3.connect(f)
     c = db.cursor()
-    c.execute("SELECT story_title FROM full_story WHERE story_id =" + str(sid_input) + ";")
+#====================================
+
+    c.execute("SELECT story_title FROM full_story WHERE story_id = ?", (sid_input,))
     sTitle = c.fetchall()
 
     print(sTitle)
@@ -26,9 +27,12 @@ def getTitle(sid_input):
 
 
 def getFullText(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#====================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 
@@ -43,9 +47,12 @@ def getFullText(sid_input):
 
 
 def getuser(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#===================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 
@@ -59,9 +66,12 @@ def getuser(sid_input):
     return (de_fText)
 
 def getEmail(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#===================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 
@@ -75,9 +85,12 @@ def getEmail(sid_input):
     return (de_fText)
 
 def getRecentAdd(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#====================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 

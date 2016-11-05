@@ -26,7 +26,7 @@ def create_story(u_username, u_title, u_recent):
 
 # Deletes an existing story
 
-create_story("sammi", "asdfasdf", "amany things")
+#create_story("sammi", "asdfasdf", "amany things")
 
 def delete(u_title):
     #==============================================
@@ -70,14 +70,16 @@ def check_story(u_username, u_id):
     db = sqlite3.connect(f)
     c = db.cursor()
 
-    c.execute("SELECT story_id FROM useri WHERE username = ?", u_username)
+    c.execute("SELECT story_id FROM useri WHERE username = ?", (u_username,))
     list_of_ids = list(itertools.chain.from_iterable(c))
-    listH = map(list_of_ids[0].split(',') )
-    for x in mylist:
-        if x == u_id:
-            db.commit()
-            db.close()
-            return True
+    listH = list_of_ids[0].split(',')
+    for x in listH:
+        print(x)
+        if x != '':
+            if int(x) == int(u_id):
+                db.commit()
+                db.close()
+                return True
 
     db.commit()
     db.close()

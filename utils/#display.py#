@@ -1,7 +1,4 @@
-import sqlite3
-import os
-
-
+import sqlite3, os, itertools
 
 ##s='../data/story.db'
 ##f_s='../data/full_story.db'
@@ -9,13 +6,17 @@ import os
 
     
 def getTitle(sid_input):
-    f="data/weblog.db"  
+#============ACCESSING THE DB========
+    f="../data/weblog.db"  
     db = sqlite3.connect(f)
     c = db.cursor()
-    c.execute("SELECT story_title FROM full_story WHERE story_id =" + str(sid_input) + ";")
-    sTitle = c.fetchall()
+#====================================
 
-    print(sTitle)
+    c.execute("SELECT story_title FROM full_story WHERE story_id = ?", (sid_input,))
+   # sTitle = c.fetchall()
+   listH = list(itertools.chain.from_iterable(c))
+
+#    print(sTitle)
     
     db.commit()
     db.close()
@@ -24,11 +25,16 @@ def getTitle(sid_input):
             de_title=y
     return (de_title)
 
+getTitle(
+
 
 def getFullText(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#====================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 
@@ -43,9 +49,12 @@ def getFullText(sid_input):
 
 
 def getuser(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#===================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 
@@ -59,9 +68,12 @@ def getuser(sid_input):
     return (de_fText)
 
 def getEmail(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#===================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 
@@ -75,9 +87,12 @@ def getEmail(sid_input):
     return (de_fText)
 
 def getRecentAdd(sid_input):
-    f="data/weblog.db"
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
+#====================================
+
     c.execute("SELECT full_text FROM full_story WHERE story_id =" + str(sid_input) + ";")
     sFText c.fetchall()
 
