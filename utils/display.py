@@ -4,6 +4,19 @@ import sqlite3, os, itertools
 ##f_s='../data/full_story.db'
 ##u='../data/users.db'
 
+#==================================
+#
+#
+#    Accessor Methods
+#       getTitle(sid_input)
+#       getFullText(sid_input)
+#       getMostRecent(sid_input)
+#       getNumberEdits(sid_input)
+#       getTimeSince(sid_input)
+#       getTimestamp(sid_input)
+#
+#
+#==================================
     
 def getTitle(sid_input):
 #============ACCESSING THE DB========
@@ -46,7 +59,7 @@ def getFullText(sid_input):
 
     return listH[0]
 
-def getRecentText(sid_input):
+def getMostRecent(sid_input):
 #============ACCESSING THE DB========
     f="../data/weblog.db"
     db = sqlite3.connect(f)
@@ -94,7 +107,7 @@ def getTimeSince(sid_input):
 
     return listH[0]
 
-def getTimeStamp(sid_input):
+def getTimestamp(sid_input):
 #============ACCESSING THE DB========
     f="../data/weblog.db"
     db = sqlite3.connect(f)
@@ -110,8 +123,39 @@ def getTimeStamp(sid_input):
 
     return listH[0]
 
+#==========================================
+#
+#
+#
+#      Misc Methods
+#
+#
+#
+#===========================================
+
+def getKey(item):
+    return item[1]
+
+def mostRecentStories():
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
+    db = sqlite3.connect(f)
+    c=db.cursor()
+#====================================
+    
+    finalList = []
+
+    c.execute("SELECT story_id, timestamp FROM stori")
+    list_ids = c.fetchall()
+
+    listH = sorted(list_ids, key=getKey)
+
+    for x in listH:
+        if len(finalList)<11:
+            finalList.append(x[0])
+    
+    return finalList
+
+print(mostRecentStories())
 
 
-
-
-  
