@@ -154,8 +154,30 @@ def mostRecentStories():
         if len(finalList)<11:
             finalList.append(x[0])
     
+    db.commit()
+    db.close()
+
     return finalList
 
-print(mostRecentStories())
+#print(mostRecentStories())
 
 
+def userStories(u_username):
+#============ACCESSING THE DB========
+    f="../data/weblog.db"
+    db = sqlite3.connect(f)
+    c=db.cursor()
+#====================================
+    
+    finalList = []
+
+    c.execute("SELECT story_id FROM useri WHERE username = ?", (u_username,))
+    listI = list(itertools.chain.from_iterable(c))
+#    listH = listI[1:len(listI)-2]
+
+    db.commit()
+    db.close()
+
+    return listI
+
+print(userStories("sammi"))
