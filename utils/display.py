@@ -20,7 +20,7 @@ import sqlite3, os, itertools
     
 def getTitle(sid_input):
 #============ACCESSING THE DB========
-    f="../data/weblog.db"  
+    f="data/weblog.db"  
     db = sqlite3.connect(f)
     c = db.cursor()
 #====================================
@@ -45,7 +45,7 @@ def getTitle(sid_input):
 
 def getFullText(sid_input):
 #============ACCESSING THE DB========
-    f="../data/weblog.db"
+    f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -61,7 +61,7 @@ def getFullText(sid_input):
 
 def getMostRecent(sid_input):
 #============ACCESSING THE DB========
-    f="../data/weblog.db"
+    f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -77,7 +77,7 @@ def getMostRecent(sid_input):
 
 def getNumberEdits(sid_input):
 #============ACCESSING THE DB========
-    f="../data/weblog.db"
+    f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -93,7 +93,7 @@ def getNumberEdits(sid_input):
 
 def getTimeSince(sid_input):
 #============ACCESSING THE DB========
-    f="../data/weblog.db"
+    f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -109,7 +109,7 @@ def getTimeSince(sid_input):
 
 def getTimestamp(sid_input):
 #============ACCESSING THE DB========
-    f="../data/weblog.db"
+    f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -138,7 +138,7 @@ def getKey(item):
 
 def mostRecentStories():
 #============ACCESSING THE DB========
-    f="../data/weblog.db"
+    f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -164,7 +164,7 @@ def mostRecentStories():
 
 def userStories(u_username):
 #============ACCESSING THE DB========
-    f="../data/weblog.db"
+    f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -172,7 +172,10 @@ def userStories(u_username):
     finalList = []
 
     c.execute("SELECT story_id FROM useri WHERE username = ?", (u_username,))
-    listI = list(itertools.chain.from_iterable(c))
+    #listI = list(itertools.chain.from_iterable(c))
+    
+    listI = c.fetchall()
+
 #    listH = listI[1:len(listI)-2]
 
     db.commit()
