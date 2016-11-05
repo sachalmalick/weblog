@@ -25,8 +25,6 @@ def create_story(u_username, u_title, u_recent):
     db.commit()
     db.close()
 
-# Deletes an existing story
-
 #create_story("sammi", "asdfasdf", "amany things")
 
 def delete(u_id):
@@ -50,7 +48,7 @@ def delete(u_id):
 
 delete(26)
 
-# Adds to a story if its count of editors is < 15
+# Adds to a story if its count of editors is < 16
 
 def add_story(u_username, u_id, u_recent):
     #==============================================
