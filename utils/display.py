@@ -194,6 +194,33 @@ def mostRecentStories(num):
 print("eho")
 print(mostRecentStories())
 
+def getStories():
+#============ACCESSING THE DB========
+    #f="data/weblog.db"
+    db = sqlite3.connect(f)
+    c=db.cursor()
+#====================================
+    
+    finalList = []
+
+    c.execute("SELECT story_id, timestamp FROM story")
+    list_ids = c.fetchall()
+
+    listH = sorted(list_ids, key=getKey)
+
+    finalLen = len(listH)
+
+    for x in listH:
+        if len(finalList)<finalLen:
+            finalList.append(x[0])
+    
+    db.commit()
+    db.close()
+
+    return finalList
+print("eho")
+print(mostRecentStories())
+
 
 def userStories(u_username):
 #============ACCESSING THE DB========
