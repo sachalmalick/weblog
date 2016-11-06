@@ -67,29 +67,68 @@ WELCOME
     </tr>
 
     {% endfor %}
-      
-    </tr>
 
     
-  </table>
-  <br>
+    {% elif action == "make" %}
 
-  {% elif action == "make" %}
 
-  <form action="/make_story", method="POST">
-  <br>
-  Title of Story:<br>
-  <input type="text" name="title">
-  <br>
-  <br>
-  First edit (get the ball rolling):<br>
-  <input type="text" name="text">
-  <br>
-  <br>
-  <input type="submit" name="sub1">
+ WELCOME
+    <table style="width:100%">
+      <tr>
+	<td style="width: 50%">
 	  
-  </form>
-  <br>
+	  <br>
+	  This is the where you edit stories
+	  <br>
+	  
+	</td>
+	<td style="width: 30%">
+	</td>
+	<td style="width: 20%">
+	  
+	  <form action="/logout">
+	    <input type="submit" value="Logout" />
+	  </form>
+	  <form action="/return_home">
+	    <input type="submit" value="Back" />
+	  </form>
+	  
+	</td>
+	
+      <tr>
+	
+	<td>
+	  
+    
+    <br>
+
+    
+    <form action="/make_story", method="POST">
+      <br>
+      Title of Story:<br>
+      <input type="text" name="title">
+      <br>
+      <br>
+      First edit (get the ball rolling):<br>
+      <input type="text" name="text">
+      <br>
+      <br>
+      <input type="submit" name="sub1">
+      
+    </form>
+    <br>
+    
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+    </tr>
+
+
+    
+    </tr>
+</table>
 
   
   {% endif %}
