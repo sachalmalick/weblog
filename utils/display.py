@@ -169,7 +169,7 @@ def getTimestamp(sid_input):
 def getKey(item):
     return item[1]
 
-def mostRecentStories():
+def mostRecentStories(num):
 #============ACCESSING THE DB========
     #f="data/weblog.db"
     db = sqlite3.connect(f)
@@ -184,7 +184,7 @@ def mostRecentStories():
     listH = sorted(list_ids, key=getKey)
 
     for x in listH:
-        if len(finalList)<11:
+        if len(finalList)<num:
             finalList.append(x[0])
     
     db.commit()
@@ -197,7 +197,7 @@ print(mostRecentStories())
 
 def userStories(u_username):
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
+    #f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
