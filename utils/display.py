@@ -1,6 +1,6 @@
 import sqlite3, os, itertools
 
-f = "data/weblog.db"
+f = "../data/weblog.db"
 
 #==================================
 #
@@ -220,3 +220,16 @@ def userStories(u_username):
     return finalList
 
 
+def newStories(u_username):
+    a = getStories()
+    b = userStories(u_username)
+    b = map(int, b)
+
+    diff = set(a) - set(b)
+    result = [o for o in a if o in diff]
+
+    print(a)
+    print(b)
+    return result
+
+#print(newStories("test"))
