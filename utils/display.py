@@ -2,10 +2,6 @@ import sqlite3, os, itertools
 
 f = "data/weblog.db"
 
-##s='../data/story.db'
-##f_s='../data/full_story.db'
-##u='../data/users.db'
-
 #==================================
 #
 #
@@ -21,32 +17,26 @@ f = "data/weblog.db"
 #==================================
     
 def getTitle(sid_input):
-#============ACCESSING THE DB========
-    #f="data/weblog.db"  
+#============ACCESSING THE DB======== 
     db = sqlite3.connect(f)
     c = db.cursor()
 #====================================
 
     c.execute("SELECT story_title FROM full_story WHERE story_id = ?", (sid_input,))
     sTitle = c.fetchall()
-    #listH = list(itertools.chain.from_iterable(c))
-    #print(sTitle)
-    
+    #listH = list(itertools.chain.from_iterable(c))    
     db.commit()
     db.close()
 
-    #return listH[0]
     for x in sTitle:
        for y in x:
             de_title=y
             return (de_title)
 
-#print(getTitle(24))
 
 
 def getFullText(sid_input):
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -54,8 +44,6 @@ def getFullText(sid_input):
     c.execute("SELECT full_text FROM full_story WHERE story_id = ?",(sid_input,))
 
     #listH = list(itertools.chain.from_iterable(c))   
-    #return listH[0]
-
     sTitle = c.fetchall()
     
     db.commit()
@@ -68,7 +56,6 @@ def getFullText(sid_input):
 
 def getMostRecent(sid_input):
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -76,7 +63,6 @@ def getMostRecent(sid_input):
     c.execute("SELECT most_recent FROM story WHERE story_id = ?",(sid_input,))
 
     #listH = list(itertools.chain.from_iterable(c))
-    #return listH[0]
     sTitle = c.fetchall()
     
     db.commit()
@@ -90,7 +76,6 @@ def getMostRecent(sid_input):
 
 def getNumberEdits(sid_input):
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -103,7 +88,6 @@ def getNumberEdits(sid_input):
     db.commit()
     db.close()
 
-    #return listH[0]
     for x in sTitle:
        for y in x:
             de_title=y
@@ -112,15 +96,12 @@ def getNumberEdits(sid_input):
 
 def getTimeSince(sid_input):
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
 
     c.execute("SELECT time_since FROM story WHERE story_id = ?",(sid_input,))
-
     #listH = list(itertools.chain.from_iterable(c))
-    #return listH[0]
 
     sTitle = c.fetchall()
     db.commit()
@@ -134,7 +115,6 @@ def getTimeSince(sid_input):
 
 def getTimestamp(sid_input):
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -142,11 +122,9 @@ def getTimestamp(sid_input):
     c.execute("SELECT timestamp FROM story WHERE story_id = ?",(sid_input,))
 
     #listH = list(itertools.chain.from_iterable(c))
-    #return listH[0]
 
     sTitle = c.fetchall()
     #listH = list(itertools.chain.from_iterable(c))
-    #print(sTitle)
     
     db.commit()
     db.close()
@@ -171,7 +149,6 @@ def getKey(item):
 
 def mostRecentStories(num):
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -191,12 +168,11 @@ def mostRecentStories(num):
     db.close()
 
     return finalList
-print("eho")
-print(mostRecentStories(10))
+#print("eho")
+#print(mostRecentStories(10))
 
 def getStories():
 #============ACCESSING THE DB========
-    #f="data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
@@ -218,22 +194,15 @@ def getStories():
     db.close()
 
     return finalList
-print("eho")
-print(mostRecentStories(10))
-
 
 def userStories(u_username):
 #============ACCESSING THE DB========
-    #f="../data/weblog.db"
     db = sqlite3.connect(f)
     c=db.cursor()
 #====================================
-    
     finalList = []
-
     c.execute("SELECT story_ids FROM users WHERE username = ?", (u_username,))
     #listI = list(itertools.chain.from_iterable(c))
-    
     listI = c.fetchall()
     
     for list in listI:
@@ -249,6 +218,5 @@ def userStories(u_username):
     db.commit()
     db.close()
     return finalList
-    #return listI
 
-print(userStories("sammi"))
+

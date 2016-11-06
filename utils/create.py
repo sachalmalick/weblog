@@ -19,7 +19,6 @@ f="data/weblog.db"
 
 def check_story(g_username, story_id):
     #===============OPENING THE DB=========
-    #f = "../data/weblog.db"
     db = sqlite3.connect(f)
     c = db.cursor()
     #=====================================
@@ -37,7 +36,6 @@ def check_story(g_username, story_id):
 
 def create_story(g_username, u_id, u_title, u_recent, u_editors, u_timesince, u_timestamp):
     #===============OPENING THE DB=========
-    #f = "../data/weblog.db"
     db = sqlite3.connect(f)
     c = db.cursor()
     #=====================================
@@ -62,7 +60,6 @@ def create_story(g_username, u_id, u_title, u_recent, u_editors, u_timesince, u_
 
 def update_story(g_username, u_id,  u_recent, u_timestamp):
     #===============OPENING THE DB=========
-    #f = "../data/weblog.db"
     db = sqlite3.connect(f)
     c = db.cursor()
     #=====================================
@@ -103,7 +100,6 @@ def update_story(g_username, u_id,  u_recent, u_timestamp):
 
 def delete(u_id):
     #===============OPENING THE DB=========
-    #f = "../data/weblog.db"
     db = sqlite3.connect(f)
     c = db.cursor()
     #=====================================

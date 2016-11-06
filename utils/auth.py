@@ -1,6 +1,6 @@
 import hashlib, sqlite3
 
-
+#faciliates logins
 def login(g_username, g_password):
     #===========OPENING THE DB=============
     f="data/weblog.db"
@@ -60,7 +60,7 @@ def make_account(g_username, g_password1, g_password2, email):
     c = db.cursor()
     #===============
     
-    c.execute('INSERT INTO users VALUES("",'+'"'+g_username+'"'+','+'"'+g_password1+'"'+','+'"'+email+'"'+', "");')#'"'+', "", "");')
+    c.execute('INSERT INTO users VALUES("",'+'"'+g_username+'"'+','+'"'+g_password1+'"'+','+'"'+email+'"'+', "");')
 
     #===============CLOSE
     db.commit()

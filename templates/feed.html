@@ -1,22 +1,20 @@
 {% extends "layout.html" %}
 {% block title %}FEED{% endblock %}
 
-WELCOME
-
 {% block content %}
 
-WELCOME
-
 {% if action == "edit" %}
-  <table style="width:100%">
-    <tr>
-      <td style="width: 50%">
 
-	WELCOME
-	<br>
-	This is the feed of undiscovered stories
-	<br>
-	
+<table style="width:100%">
+  <tr>
+    <td style="width: 50%">
+
+      WELCOME
+      <br>
+      This is the feed of undiscovered stories
+      <br>
+
+      
       </td>
       <td style="width: 30%">
       </td>
@@ -31,7 +29,6 @@ WELCOME
 	
       </td>
 
-      {{article}}
       {% for each_item in article%}
     <tr>
       
@@ -78,7 +75,7 @@ WELCOME
 	<td style="width: 50%">
 	  
 	  <br>
-	  This is the where you edit stories
+	  This is the where you create stories
 	  <br>
 	  
 	</td>
