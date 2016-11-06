@@ -204,7 +204,7 @@ def userStories(u_username):
     
     finalList = []
 
-    c.execute("SELECT story_id FROM useri WHERE username = ?", (u_username,))
+    c.execute("SELECT story_ids FROM users WHERE username = ?", (u_username,))
     #listI = list(itertools.chain.from_iterable(c))
     
     listI = c.fetchall()

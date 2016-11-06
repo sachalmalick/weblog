@@ -24,10 +24,13 @@
 	<form action="/feed">
 	  <input type="submit" value="View Other Stories" />
 	</form>
+	<form action="/show_make_story">
+	  <input type="submit" value="Create a Story" />
+	</form>
 	
       </td>
     </tr>
-
+    {{article}}
     {% for each_item in article%}
     
     <tr>
@@ -37,7 +40,7 @@
 	STORY:
 	<br>
 	
-	{% for each_piece in each_item %}
+	{% for each_piece in article[each_item] %}
 	{{each_piece}}
 	<br>
 	{% endfor %}

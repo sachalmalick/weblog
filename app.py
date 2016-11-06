@@ -5,7 +5,7 @@
 
 
 #import the fxns--from utils
-import utils.auth, utils.display, hashlib, os
+import utils.auth, utils.display, utils.create, hashlib, os
 from flask import Flask, render_template, session, request, redirect, url_for
 
 app = Flask(__name__)
@@ -24,12 +24,7 @@ def index():
         print (list_ur_stories)
         list_of_titles=[]
         list_of_stories=[]
-
-
-        listofstuff=[]
-        listofstuff=utils.display.mostRecentStories()
-        print ("whapup")
-        print (listofstuff)
+        dict_article={}
         
         article = []
         for num in list_ur_stories:
@@ -39,10 +34,12 @@ def index():
             hold.append(title1)
             hold.append(full_text)
             article.append(hold)
+            dict_article[num]=hold
             #list_of_titles.append(title1)
             #list_of_stories.append(full_text)
         print list_of_titles
-        return render_template('index.html', article=article)#list_of_title)
+        print dict_article
+        return render_template('index.html', article=dict_article)#article=article, list_stories=list_ur_stories)#list_of_title)
     #redirect(url_for("log_em_in"))
     return render_template('auth.html', action_type='login')
 
@@ -76,6 +73,25 @@ def log_em_out():
     session.pop(secret)
     return redirect(url_for("index")) #redirect(url_for("log_em_in"))
 
+@app.route("/show_make_story")
+def make_us_one():
+    return render_template("feed.html", action="make")
+
+@app.route("/make_story", methods=['POST'])
+def lets_make():
+    name = session[secret]
+    title = request.form['title']
+    text = request.form['text']
+
+    list_of_nums = utils.display.mostRecentStories()
+    num = max(list_of_nums)
+    num+=1
+
+    ###$$TIMESTAMP MUST BE DONE HERE
+    
+    utils.create.create_story(name,num,title,text,1,0,100)
+    return redirect(url_for("index"))
+
 #similar mechanic to "/"
 @app.route("/feed")
 def feed_em_new_ones():
@@ -88,6 +104,7 @@ def feed_em_new_ones():
         list_of_titles=[]
         list_of_stories=[]
         article = []
+        dict_article={}
         for num in list_other_stories:
             title = utils.display.getTitle(num)
             most_recent = utils.display.getMostRecent(num)
@@ -95,7 +112,8 @@ def feed_em_new_ones():
             hold.append(title)
             hold.append(most_recent)
             article.append(hold)
-        return render_template('feed.html', article=article)
+            dict_article[num]=hold
+        return render_template('feed.html', article=dict_article, action = "edit")
         
         #title1 = utils.display.getTitle(0)
         #return render_template("feed.html", article_title=title1)
@@ -135,7 +153,14 @@ def create_dat_account():
     #else
     return render_template('auth.html', action_type='mk_act')
 
-
+@app.route("/edit", methods = ['POST'])
+def edit_dat_post():
+    edit=request.form["edit"]
+    num=request.form["id"]
+    print num
+    time_s=utils.display.getTimestamp(num)
+    utils.create.update_story(session[secret],num,edit,time_s)
+    return redirect(url_for("index"))
 
 
 #======================================END__OF__ROUTAGE

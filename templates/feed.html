@@ -1,9 +1,13 @@
 {% extends "layout.html" %}
 {% block title %}FEED{% endblock %}
 
+WELCOME
+
 {% block content %}
 
+WELCOME
 
+{% if action == "edit" %}
   <table style="width:100%">
     <tr>
       <td style="width: 50%">
@@ -27,7 +31,7 @@
 	
       </td>
 
-      
+      {{article}}
       {% for each_item in article%}
     <tr>
       
@@ -35,18 +39,31 @@
 	
 	STORY:
 	<br>
-	{% for each_piece in each_item %}
+	{{each_item}}
+	<br>
+	{% for each_piece in article[each_item] %}
 	{{each_piece}}
 	<br>
 	{% endfor %}
+
 	<br>
+	<form action="/edit", method="POST">
+	  add to the story:<br>
+	  <input type="text" name="edit">
+	  <input type="hidden" name="id" value={{each_item}}>
+	  <br>
+	  <br>
+	  <input type="submit" name="sub1">
+	  
+	</form>
+	<br>
+	-----------------------------------------------------------------
 	<br>
       </td>
       <td>
       </td>
       <td>
       </td>
-      
     </tr>
 
     {% endfor %}
@@ -56,8 +73,28 @@
     
   </table>
   <br>
-  
 
+  {% elif action == "make" %}
+
+  <form action="/make_story", method="POST">
+  <br>
+  Title of Story:<br>
+  <input type="text" name="title">
+  <br>
+  <br>
+  First edit (get the ball rolling):<br>
+  <input type="text" name="text">
+  <br>
+  <br>
+  <input type="submit" name="sub1">
+	  
+  </form>
+  <br>
+
+  
+  {% endif %}
+
+  
   {% endblock %}
   
   
