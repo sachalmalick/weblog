@@ -13,6 +13,8 @@ app = Flask(__name__)
 app.secret_key = os.urandom(32)
 secret = 'secret_cookie_key'
 
+n_in_feed=20#THIS IS THE NUMBER OF STORIES IN FEED THAT WE DISPLAY(n-1)are displayed
+
 #========================================ROUTAGE
 
 @app.route("/")
@@ -82,8 +84,9 @@ def lets_make():
     name = session[secret]
     title = request.form['title']
     text = request.form['text']
-
-    list_of_nums = utils.display.mostRecentStories()
+    
+#THIS SHOULD BE A LIST OF ALL STORIES THAT USER HAS NOT TOUCHED
+    list_of_nums = utils.display.mostRecentStories(n_in_feed)#list of 10 recent ones
     num = max(list_of_nums)
     num+=1
 
@@ -99,7 +102,7 @@ def feed_em_new_ones():
         name = session[secret]
 
         list_other_stories=[]
-        list_other_stories=utils.display.mostRecentStories()
+        list_other_stories=utils.display.mostRecentStories(n_in_feed)####
 
         list_of_titles=[]
         list_of_stories=[]

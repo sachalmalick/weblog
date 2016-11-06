@@ -167,7 +167,7 @@ def getTimestamp(sid_input):
 #===========================================
 
 def getKey(item):
-    return item[1]
+    return item[1]    
 
 def mostRecentStories(num):
 #============ACCESSING THE DB========
@@ -192,7 +192,7 @@ def mostRecentStories(num):
 
     return finalList
 print("eho")
-print(mostRecentStories())
+print(mostRecentStories(10))
 
 def getStories():
 #============ACCESSING THE DB========
@@ -219,7 +219,7 @@ def getStories():
 
     return finalList
 print("eho")
-print(mostRecentStories())
+print(mostRecentStories(10))
 
 
 def userStories(u_username):
