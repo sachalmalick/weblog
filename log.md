@@ -11,3 +11,5 @@
 |11-01-16|Created compendium of functions for use in app| Incorporated login into app|Worked on incorporating initiating functions for db| Started templates + created basic login/logout/make account||
 |11-02-16|Completed method list, finished implementing create.py, creating story_ids|Spoke with Mr. Brown about progress within the team  |Pushed the database to the repo |Working on Jinja2 (inheritance+displaying text)||
 |11-03-16|Pushed changes to create.py||||Worked on presenting stories, eidtied fxns in display, added parameters to login/logout|
+|11-04-16||||Prepared the various templates for the arrival of fxns|
+|11-05-16||||Attched and intergrated the fxns i the utils forlder, rewrote parts for functionallity, wrote the remaing html file, implemented editing, displaying and creating of stories, using fxns given by team in utils|
