@@ -1,6 +1,6 @@
 import sqlite3, os, itertools
 
-f = "../data/weblog.db"
+f = "data/weblog.db"
 
 #==================================
 #
@@ -220,8 +220,8 @@ def userStories(u_username):
     return finalList
 
 
-def newStories(u_username):
-    a = getStories()
+def newStories(u_username,num):
+    a = mostRecentStories(num)#getStories()
     b = userStories(u_username)
     b = map(int, b)
 

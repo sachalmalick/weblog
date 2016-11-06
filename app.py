@@ -92,7 +92,7 @@ def feed_em_new_ones():
         name = session[secret]
 
         list_other_stories=[]
-        list_other_stories=utils.display.mostRecentStories(n_in_feed)
+        list_other_stories=utils.display.newStories(name, n_in_feed)#mostRecentStories(n_in_feed)
         dict_article={}
         for num in list_other_stories:
             title = utils.display.getTitle(num)
