@@ -31,8 +31,8 @@ def login(g_username, g_password):
 
 def make_account(g_username, g_password1, g_password2, email):
 
-    if(g_username or g_password1 or g_password2 or email == ""):
-        return False
+    #if(g_username or g_password1 or g_password2 or email == ""):
+        #return False
     
     if(g_password1 != g_password2):
         return False

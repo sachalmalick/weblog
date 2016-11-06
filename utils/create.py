@@ -63,12 +63,12 @@ def update_story(g_username, u_id,  u_recent, u_timestamp):
     params2 = (u_recent, u_timestamp, u_id)
     params3 = (u_id, g_username)
     
-    story_hold = c.execute("SELECT number_edits from STORY;")
-    user_hold = c.execute("SELECT story_ids from USER;")
+    story_hold = c.execute("SELECT number_edits FROM story;")
+    user_hold = c.execute("SELECT story_ids FROM users;")
 
     
-    
-    c.execute("UPDATE story SET most_recent = ?, number_edits += 1, time_since = 0, timestamp = ? WHERE story_id = ?´;", params2)
+    c.execute("UPDATE story SET most_recent = ?, number_edits += 1, time_since = 0, timestamp = ? WHERE story_id = ?;")
+    #c.execute("UPDATE story SET most_recent = ?, number_edits += 1, time_since = 0, timestamp = ? WHERE story_id = ?;", params2)
     c.execute("UDPATE full_story SET full_text = full_text + ? WHERE story_id = ?;", params1)
     c.execute("UPDATE users SET story_ids = story_ids + ? WHERE username = ?;", params3)
     db.commit()
@@ -81,6 +81,6 @@ def delete(u_id):
     c = db.cursor()
     #=====================================
 
-#create_story("user", 121, "title", "recentstuff", 4, 55,55);
-#create_story("user", 122, "sharon story", "sharon went to the park", 4, 55,55);
+create_story("sammi", 521, "title", "recentstuff", 4, 55,55);
+create_story("user", 422, "sharon story", "sharon went to the park", 4, 55,55);
 print (check_story("test", 11))

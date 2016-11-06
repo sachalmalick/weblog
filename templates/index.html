@@ -27,15 +27,21 @@
 	
       </td>
     </tr>
+
+    {% for each_item in article%}
     
     <tr>
       
       <td>
 	
-	STORIES:
+	STORY:
 	<br>
-	{{article_title}}
 	
+	{% for each_piece in each_item %}
+	{{each_piece}}
+	<br>
+	{% endfor %}
+	<br>
       </td>
       <td>
       </td>
@@ -43,6 +49,9 @@
       </td>
       
     </tr>
+
+    {% endfor %}
+    
   </table>
   <br>
   

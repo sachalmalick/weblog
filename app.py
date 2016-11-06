@@ -18,8 +18,31 @@ secret = 'secret_cookie_key'
 @app.route("/")
 def index():
     if (secret in session):
-        title1 = utils.display.getTitle(121)
-        return render_template('index.html', article_title=title1)
+        name = session[secret]
+        list_ur_stories=utils.display.userStories(name)
+        print "bump"
+        print (list_ur_stories)
+        list_of_titles=[]
+        list_of_stories=[]
+
+
+        listofstuff=[]
+        listofstuff=utils.display.mostRecentStories()
+        print ("whapup")
+        print (listofstuff)
+        
+        article = []
+        for num in list_ur_stories:
+            title1 = utils.display.getTitle(num)
+            full_text = utils.display.getFullText(num)
+            hold = []
+            hold.append(title1)
+            hold.append(full_text)
+            article.append(hold)
+            #list_of_titles.append(title1)
+            #list_of_stories.append(full_text)
+        print list_of_titles
+        return render_template('index.html', article=article)#list_of_title)
     #redirect(url_for("log_em_in"))
     return render_template('auth.html', action_type='login')
 
@@ -57,8 +80,25 @@ def log_em_out():
 @app.route("/feed")
 def feed_em_new_ones():
     if (secret in session):
-        title1 = utils.display.getTitle(122)
-        return render_template("feed.html", article_title=title1)
+        name = session[secret]
+
+        list_other_stories=[]
+        list_other_stories=utils.display.mostRecentStories()
+
+        list_of_titles=[]
+        list_of_stories=[]
+        article = []
+        for num in list_other_stories:
+            title = utils.display.getTitle(num)
+            most_recent = utils.display.getMostRecent(num)
+            hold = []
+            hold.append(title)
+            hold.append(most_recent)
+            article.append(hold)
+        return render_template('feed.html', article=article)
+        
+        #title1 = utils.display.getTitle(0)
+        #return render_template("feed.html", article_title=title1)
     return redirect(url_for("index"))
 
 #to return from feed to / or index
