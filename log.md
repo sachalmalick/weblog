@@ -13,3 +13,4 @@
 |11-03-16|Pushed changes to create.py||||Worked on presenting stories, eidtied fxns in display, added parameters to login/logout|
 |11-04-16|Created dummy db for testing creates.py methods, testing different fields on useri, stori, and full_stori (timestamp, autoincrement)||created accessor fxns for db's, talked to sachal about issues re. different dbs|Prepared the various templates for the arrival of fxns|
 |11-05-16|Edited display.py to include all accessor methods, finished testing all methods in creates.py on dummy db|||Attched and intergrated the fxns i the utils forlder, rewrote parts for functionallity, wrote the remaing html file, implemented editing, displaying and creating of stories, using fxns given by team in utils|
+|11-06-16||||adressed some remaing issues, concering the displaing of information, tested, cleaned up the html, tried to make the iste more aesthitically pleasing, populated the site||
